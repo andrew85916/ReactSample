@@ -1,6 +1,5 @@
 import Post from "./post";
 import Share from "./share";
-// import "./feed.css";
 import { Posts } from "./dummyData";
 import styled from "@emotion/styled";
 import { useEffect,useState } from "react";
@@ -16,13 +15,8 @@ const FeedWrapper = styled.div`
     padding: 20px;
     
 `
-
 export default function Feed() {
-  
-
   const [articles,setArticles] = useState([])
- 
-
   const fetchArticles = async ()=>{
     const token = localStorage.getItem("token");
     const response = await fetch("http://localhost:8080/api/get_others_articles", {
@@ -33,12 +27,8 @@ export default function Feed() {
        },
     })
     const responseJSON = await response.json()
-    console.log("feed")
-    // console.log(responseJSON)
     setArticles(responseJSON)
-    console.log(articles)
   }
-
 
   useEffect(()=>{
     fetchArticles()
@@ -48,7 +38,6 @@ export default function Feed() {
     <FeedContainer>
       <FeedWrapper>
         <Share />
-        {/* <div>{articles}</div> */}
         {articles.map((p) => (
           <Post post={p} />
         ))}

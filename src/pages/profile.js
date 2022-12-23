@@ -1,13 +1,9 @@
 import styled from "@emotion/styled";
 import React, { useEffect, useState,useRef,useCallback } from "react";
-// import {  NavLink  } from "react-router-dom";
 import NavBar from "../components/navBar";
-import Feed from "../components/feed";
 import {useNavigate} from "react-router-dom"
 import OwnPost from "../components/own_post";
 import Share from "../components/share";
-
-
 
 const FeedContainer = styled.div`
     display: flex;
@@ -21,13 +17,11 @@ const FeedWrapper = styled.div`
     width:30em;
 `
 
-const Profile = (props) => {
-  const navigate = useNavigate();
+export default Profile = () => {
 
+  const navigate = useNavigate();
   const [articles,setArticles] = useState([])
   const [articleFlag,setArticleFlag] = useState(false)
-
-
 
   function hasJWT() {
     let flag = false;
@@ -35,7 +29,6 @@ const Profile = (props) => {
     localStorage.getItem("token") ? (flag = true): (flag = false);
     return flag; 
   }
-
 
   const fetchArticles = async ()=>{
     const token = localStorage.getItem("token");
@@ -47,15 +40,8 @@ const Profile = (props) => {
        },
     })
     const responseJSON = await response.json()
-    console.log("feed")
-    // console.log(responseJSON)
     setArticles(responseJSON)
-
-    console.log("test")
   };
-
-
-
 
   useEffect(()=>{
     if (!hasJWT()) {
@@ -75,11 +61,10 @@ const Profile = (props) => {
           {articles.map((p) => (
             <OwnPost key={p.id} post={p} reloadFlag={setArticleFlag} />
           ))}
-        {/* <OwnPost post ={articles} /> */}
       </FeedWrapper>
     </FeedContainer>
     </>
   )
 };
 
-export default Profile;
+

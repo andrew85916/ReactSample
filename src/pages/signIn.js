@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styled from "@emotion/styled";
 import { useNavigate } from "react-router-dom";
 
-
 const Container = styled.div`
   background-color: gray;
   height: 100%;
@@ -10,37 +9,29 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;'
 `;
-
-
-
 const SignInCard = styled.div`
   background-color: #FFFFFF;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  // padding: 0 10px;
   width: 20em;
   height: 20em;
   border-radius: 20px;
   margin: auto; 
 `;
 const SignInForm = styled.form`
-
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 20em;
-
   justify-content: center;
-
 `;
 const SignInHeader = styled.h1`
   font-weight: bold;
   text-align: center;
   margin: 5% 0 0 0;
 `;
-
 const Input = styled.input`
   background-color: #eee;
   border: none;
@@ -48,7 +39,6 @@ const Input = styled.input`
   margin: 2.5% 0 0 0;
   width: 50%;
 `;
-
 const SubmitButton = styled.button`
   margin: 5% 0 0 0;
   border-radius: 20px;
@@ -62,9 +52,6 @@ const SubmitButton = styled.button`
   text-transform: uppercase;
   transition: transform 80ms ease-in;
 `;
-
-
-
 const SignUpButton = styled.button`
   border-radius: 20px;
   border: 1px solid #FF4B2B;
@@ -102,24 +89,20 @@ const fetchSignIn = (username, password) => {
     });
 };
 
-const SignIn = () => {
+export default SignIn = () => {
 
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
+
   const submit = async (e) => {
     e.preventDefault();
-
     await fetchSignIn(username, password).then((data) => {
       if (data !== undefined) {
         setRedirect(true);
-
-        console.log(data.token);
         localStorage.setItem("token", data.token);
-
       } else {
-
         alert("Sign in failed.");
       }
     });
@@ -130,7 +113,6 @@ const SignIn = () => {
   const handleSignUpButton = () =>{
     navigate("/sign_up")
   } 
-
 
   return (
     <Container>
@@ -147,21 +129,13 @@ const SignIn = () => {
            required
            onChange={(e) => setPassword(e.target.value)}
           />
-          <SubmitButton>Submit</SubmitButton>
-          
+          <SubmitButton>Submit</SubmitButton>   
         </SignInForm>
         <div style={{width:'60%', margin: '2.5%'}}>
           <div style={{flex: 1, height: 2, backgroundColor: 'black'}}></div> 
         </div>
         <SignUpButton onClick={handleSignUpButton}>Sign Up</SignUpButton>
-
       </SignInCard>
-    
     </Container>
-
-    
-
   );
 };
-
-export default SignIn;

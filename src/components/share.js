@@ -1,8 +1,6 @@
-// import "./share.css";
-// import { PermMedia, Label, Room, EmojiEmotions } from "@material-ui/icons";
-
 import styled from "@emotion/styled";
 import { useEffect, useState } from "react";
+
 const ShareContainer = styled.div`
   width: 100%;
   height: 170px;
@@ -18,15 +16,11 @@ const ShareTop = styled.div`
   // align-items: center;
   flex-direction: column;
 ` 
-
 const ShareUsername = styled.span`
   font-size: 20px;
   // font-weight: 500;
   margin-left: 10px;
 `
-
-
-
 const ShareInput= styled.textarea`
   border: none;
   // width: 80%;
@@ -38,7 +32,6 @@ const ShareInput= styled.textarea`
 const ShareHeader = styled.hr`
   margin: 10px;
 ` 
-
 const ShareBottom = styled.div `
   display: flex;
   align-items: center;
@@ -69,18 +62,6 @@ const fetchPostArtictle = (content) => {
   });
 };
 
-// const  fetchUserName =  async ()=>{
-//   const token = localStorage.getItem("token");
-//   return  await  axios("http://localhost:8080/api/get_username", {
-//     method: "GET",
-//     headers: { 
-//       // "Content-Type": "application/json",
-//       "authorization":`Bearer ${token}`,
-//     }
-//   });
-// }
-
-
 export default function Share(props) {
 
   const [author, setAuthor] = useState("")
@@ -98,7 +79,6 @@ export default function Share(props) {
       })
       const responseJSON = await response.json()
       setAuthor(responseJSON.username)
-      // console.log(responseJSON)
     }
     fetchUsername()
 
@@ -117,7 +97,6 @@ export default function Share(props) {
   };
   
 
-
   return (
     <ShareContainer>
       <ShareWrapper> 
@@ -132,16 +111,8 @@ export default function Share(props) {
           <ShareButton onClick={submit}>
             Share
           </ShareButton>
-          
         </ShareBottom>
-        
       </ShareWrapper>
     </ShareContainer>
   );
 }
-
-{/* <Input
-placeholder="Name"
-required
-onChange={(e) => setUsername(e.target.value)}
-/> */}

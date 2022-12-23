@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import styled from "@emotion/styled";
+
 const Nav = styled.nav`
   background: #000;
   height: 80px;
@@ -35,7 +36,6 @@ const NavBarLink = styled(NavLink)`
     color: #15cdfc;
   }
 `;
-
 const NavBtn = styled.nav`
   display: flex;
   align-items: center;
@@ -47,7 +47,6 @@ const NavBtn = styled.nav`
     display: none;
   }
 `;
-
 const NavBtnLink = styled(NavLink)`
   border-radius: 4px;
   background: #256ce1;
@@ -66,8 +65,6 @@ const NavBtnLink = styled(NavLink)`
     color: #010606;
   }
 `;
-
-
 const NavLogo = styled.div`
   font-size: 24px;
   color: #fff;
@@ -80,17 +77,15 @@ const NavLogo = styled.div`
 
 `
 
-const NavBar = () =>{
+export default NavBar = () =>{
   
   const logout = ()=>{
     localStorage.removeItem("token")
   }
+  
   return (
-
       <Nav>
         <NavLogo>ReactSample</NavLogo>
-          {/* <img src={require('../../images/logo.svg')} alt='logo' /> */}
-
         <NavMenu>
           <NavBarLink to='/home'>
             Home
@@ -98,9 +93,6 @@ const NavBar = () =>{
           <NavBarLink to='/profile'>
             Profile
           </NavBarLink>
-
-          {/* Second Nav */}
-          {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
         </NavMenu>
         <NavBtn>
           <NavBtnLink to='/sign_in' onClick={logout}>Sign Out</NavBtnLink>
@@ -109,6 +101,3 @@ const NavBar = () =>{
     
   )  
 }
-
-
-    export default NavBar;

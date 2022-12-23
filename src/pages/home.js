@@ -1,8 +1,6 @@
 import styled from "@emotion/styled";
 import React, { useEffect, useState } from "react";
-// import {  NavLink  } from "react-router-dom";
 import NavBar from "../components/navBar";
-// import Feed from "../components/feed";
 import {useNavigate} from "react-router-dom"
 import Post from "../components/post";
 import Share from "../components/share";
@@ -18,8 +16,10 @@ const FeedWrapper = styled.div`
     width:30em;
 `
 
-const Home = (props) => {
+export default Home = () => {
+
   const navigate = useNavigate();
+  const [articles,setArticles] = useState([]);
 
   function hasJWT() {
     let flag = false;
@@ -27,8 +27,6 @@ const Home = (props) => {
     localStorage.getItem("token") ? (flag = true): (flag = false);
     return flag; 
   }
-
-  const [articles,setArticles] = useState([])
 
   const fetchArticles = async ()=>{
     const token = localStorage.getItem("token");
@@ -40,14 +38,8 @@ const Home = (props) => {
        },
     })
     const responseJSON = await response.json()
-    console.log("feed")
-    // console.log(responseJSON)
     setArticles(responseJSON)
-    console.log(articles)
   }
-
-
-
 
   useEffect(()=>{
     if (!hasJWT()) {
@@ -65,11 +57,9 @@ const Home = (props) => {
           {articles.map((p) => (
             <Post key={p.id} post={p} />
           ))}
-        {/* <Post post ={articles} /> */}
       </FeedWrapper>
     </FeedContainer>
     </>
   )
 };
 
-export default Home;
