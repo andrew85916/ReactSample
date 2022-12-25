@@ -16,7 +16,7 @@ const FeedWrapper = styled.div`
     width:30em;
 `
 
-export default Home = () => {
+export default function Home (){
 
   const navigate = useNavigate();
   const [articles,setArticles] = useState([]);

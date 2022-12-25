@@ -17,7 +17,7 @@ const FeedWrapper = styled.div`
     width:30em;
 `
 
-export default Profile = () => {
+export default function Profile(){
 
   const navigate = useNavigate();
   const [articles,setArticles] = useState([])

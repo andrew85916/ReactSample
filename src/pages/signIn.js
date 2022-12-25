@@ -89,7 +89,7 @@ const fetchSignIn = (username, password) => {
     });
 };
 
-export default SignIn = () => {
+export default function SignIn(){
 
   const navigate = useNavigate();
   const [username, setUsername] = useState("");

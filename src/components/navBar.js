@@ -77,7 +77,7 @@ const NavLogo = styled.div`
 
 `
 
-export default NavBar = () =>{
+export default function NavBar(){
   
   const logout = ()=>{
     localStorage.removeItem("token")

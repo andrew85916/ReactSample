@@ -16,6 +16,7 @@ const FeedWrapper = styled.div`
     
 `
 export default function Feed() {
+  
   const [articles,setArticles] = useState([])
   const fetchArticles = async ()=>{
     const token = localStorage.getItem("token");
@@ -29,7 +30,7 @@ export default function Feed() {
     const responseJSON = await response.json()
     setArticles(responseJSON)
   }
-
+  
   useEffect(()=>{
     fetchArticles()
   },[])

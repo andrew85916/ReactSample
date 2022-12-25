@@ -64,7 +64,7 @@ const fetchSignUp = (username, password) => {
   });
 };
 
-export default SignUp = () => {
+export default function SignUp(){
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
